@@ -1,0 +1,31 @@
+{
+  "name": "exerciseapp",
+  "version": "1.0.0",
+  "description": "This is the repo for my Exercise App in Web Programming for the Fall 2021 semester.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryannarnoldd/ExerciseApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryannarnoldd/ExerciseApp/issues"
+  },
+  "homepage": "https://github.com/ryannarnoldd/ExerciseApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
