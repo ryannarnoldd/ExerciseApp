@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <title>Fitizen | Reports</title>
+    <title>Fitizen | Share</title>
 </head>
 
 <body>
@@ -69,84 +69,49 @@
         </nav>
 
         <div class="container is-max-desktop">
-            <h2 class="title is-2 has-text-centered is-capitalized">Check Your Progress with Reports!</h2>
-            <h6 class="subtitle has-text-centered">
-                This is where you are able to see the trends and progress of your fitness journey all in one location.
-            </h6>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Calories (ckal)</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <progress class="progress is-danger" value="80" max="100">80%</progress>
-                        </p>
+            <form action="" method="post">
+                <h2 class="title is-2 has-text-centered is-capitalized">Share Your Exercise!</h2>
+                <h6 class="subtitle has-text-centered">Share your exercies with your friends and the rest of the world.</h6>
+  
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Exercise Name</label>
                     </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Move (minute)</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <progress class="progress is-info" value="60" max="100">60%</progress>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Stand (hours)</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <progress class="progress is-success" value="20" max="100">20%</progress>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Dedication (%)</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control is-expanded">
-                            <progress class="progress is-link" value="67" max="100">67%</progress>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Steps</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <b>Daily Average: 6783 steps.</b>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <b>Weekly Average: 3573 steps.</b>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" type="name" placeholder="Exercise Name">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
                 
+              <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                      <label class="label">Description</label>
+                  </div>
+                  <div class="field-body">
+                      <div class="field">
+                          <div class="control">
+                              <textarea class="textarea" type="description" placeholder="Description"></textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+                <div class="field is-horizontal">
+                    <div class="field-label"></div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-dark is-centered">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+            </form>
         </div>
-
-    </div>
 
     <footer class="footer">
         <div class="content has-text-centered">
@@ -162,7 +127,6 @@
         const VM = {
             data() {
                 return {
-                    counter: 0,
                     visible: true,
                     navbarActive: false,
                 }
@@ -176,18 +140,6 @@
             }
         }
         Vue.createApp(VM).mount('.container')
-/*
-        function formatTime(seconds) {
-            var hours   = Math.floor(seconds / 3600);
-            var minutes = Math.floor((seconds - (hours * 3600)) / 60);
-            var seconds = seconds - (hours * 3600) - (minutes * 60);
-
-            if (hours   < 10) {hours   = "0"+hours;}
-            if (minutes < 10) {minutes = "0"+minutes;}
-            if (seconds < 10) {seconds = "0"+seconds;}
-            return hours+':'+minutes+':'+seconds;
-        }
-*/
     </script>
 
 </body>
