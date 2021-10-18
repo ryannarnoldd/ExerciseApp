@@ -63,7 +63,7 @@
                         </p>
                     </div>
                     <div class="field">
-                        <!-- <p class="control is-expanded"> -->
+                        <span class="control is-expanded">
                             <div class="control">
                                 <div class="select is-fullwidth" type="topic">
                                     <select>
@@ -74,7 +74,7 @@
                                     </select>
                                 </div>
                             </div>
-                        <!--</p> -->
+                        </span>
                     </div>
                 </div>
             </div>
