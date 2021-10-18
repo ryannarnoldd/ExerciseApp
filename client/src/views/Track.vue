@@ -12,7 +12,7 @@
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <!-- <p class="control is-expanded"> -->
+                            <span class="control is-expanded">
                                 <div class="control">
                                     <div class="select is-fullwidth" type="sport">
                                         <select>
@@ -32,8 +32,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            <!-- </p> -->
-                        </div>
+                            </span>
                         <div class="field">
                             <p class="control is-expanded is-centered">
                                 <b>{{counter}} seconds.</b>
