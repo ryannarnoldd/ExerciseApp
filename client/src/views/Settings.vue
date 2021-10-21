@@ -5,13 +5,12 @@
         
         <form action="" method="post">
             <div class="field is-horizontal">
-                <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Color</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <!-- <p class="control is-expanded"> -->
+                            <span class="control is-expanded">
                                 <div class="control">
                                     <div class="select is-fullwidth" type="theme">
                                         <select aria-placeholder="Color Theme">
@@ -29,10 +28,9 @@
                                         </select>
                                     </div>
                                 </div>
-                            <!-- </p> -->
+                            </span>
                         </div>
                     </div>
-                </div>
             </div>
 
             <div class="field is-horizontal">
