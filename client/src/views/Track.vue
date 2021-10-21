@@ -5,7 +5,6 @@
 
         <div class="field is-horizontal">
             <form action="" method="post">
-
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Exercise</label>
@@ -33,6 +32,7 @@
                                     </div>
                                 </div>
                             </span>
+                        </div>
                         <div class="field">
                             <p class="control is-expanded is-centered">
                                 <b>{{counter}} seconds.</b>
@@ -40,7 +40,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="field is-horizontal">
                     <div class="field-label"></div>
                     <div class="field-body">
@@ -52,7 +51,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
