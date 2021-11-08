@@ -65,6 +65,9 @@ module.exports.Add = function Add(post) {
     if(!post.user_handle){
         throw {code: 422, msg: "Post must have an Owner"}
     }
+    post.time = Date();
+
+    post.id = list.length;
      list.push(post);
      return { ...post };
 }
@@ -79,3 +82,5 @@ module.exports.Delete = function Delete(post_id) {
     list.splice(post_id, 1);
     return post;
 }
+
+module.exports.Search = q => list.filter(x => x.caption.includes(q));

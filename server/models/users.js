@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const list = [
     { 
         firstName: 'Moshe',
@@ -40,15 +42,22 @@ const list = [
 ];
 
 module.exports.GetAll = function GetAll() { return list; }
-module.exports.Get = function Get(user_id) { return list[user_id]; }
+module.exports.Get = user_id => list[user_id];
 module.exports.GetByHandle = function GetByHandle(handle) { return ({ ...list.find( x => x.handle == handle ), password: undefined }); } 
-module.exports.Add = function Add(user) {
+module.exports.Add = function Add(user, cb) {
     if(!user.firstName){
-        throw { code: 422, msg: "First Name is required" }
+        return Promise.reject( { code: 422, msg: "First Name is required" } )
     }
-     list.push(user);
-     return { ...user, password: undefined };
-}
+
+    bcrypt.hash(user.pasword, +process.env.SALT_ROUNDS)
+        .then(hash=> {
+            user.password = hash;
+
+            list.push(user);
+
+            return { ...user, password: undefined };
+        })
+};
 
 
 module.exports.Update = function Update(user_id, user) {
@@ -76,15 +85,21 @@ module.exports.Delete = function Delete(user_id) {
 }
 
 module.exports.Login = function Login(handle, password){
-    console.log({ handle, password})
+    console.log(handle, password);
     const user = list.find(x=> x.handle == handle);
-    if(!user) throw { code: 401, msg: "Sorry there is no user with that handle" };
-
-    if( ! (password == user.password) ){
-        throw { code: 401, msg: "Wrong Password" };
+    if(!user) {
+        return Promise.reject( { code: 401, msg: "User not found" } );
     }
 
-    const data = { ...user, password: undefined };
 
-    return { user: data };
+    return bcrypt.compare(password, user.password).then(result => {
+        if(!result) {
+            throw { code: 401, msg: "Wrong password" };
+        }
+    
+        const data = { ...user, password: undefined };
+    
+        cb(null, {user: data});
+    });
+
 }
