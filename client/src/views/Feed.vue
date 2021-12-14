@@ -9,62 +9,60 @@
       <em>Fitizen</em> users from all over the world.
     </h6>
     <div class="columns">
-      <!--
-          <div class="column">
-              <div class="card">
-                  <div class="card-content">
-                      {{newPost}}
-                  </div>
-              </div>
-          </div>
-            -->
+           
       <div class="column is-half is-offset-one-quarter">
-        <!-- <post-edit :new-post="newPost" @add="add()" /> -->
 
             <div class="post" v-for=" (p, i) in posts" :key="p.src">
-                <post :post="p" @remove="remove(p, i)" />
+              <p>THIS IS A POST.</p>
+              <post :post="p" @remove="remove(p, i)" />
+              <br>
+            </div>
+
+            <div class="exercise" v-for=" e in exercises" :key="e.title">
+              <p>THIS IS A EXERCISE.</p>
+              <exercise :exercise="e" />
+              <br>
             </div>
       </div>
 
-      <!-- <div class="column"> -->
-      <!-- <post :post="newPost" /> -->
-      <!-- </div> -->
+
     </div>
   </div>
 </template>
 
 <script>
 import Post from "../components/Post.vue";
+import Exercise from "../components/Exercise.vue";
 import session from "../services/session";
-import { Delete, GetFeed } from "../services/posts";
+import { Delete, GetFeed, GetWall } from "../services/posts";
+import { GetAllLog, GetLog } from "../services/exercises";
 
 
 export default {
   components: {
     Post,
+    Exercise,
   },
   data: () => ({
-    posts: [],
+    posts : [],
+    exercises : [],
   }),
   async mounted() {
     this.posts = await GetFeed(session.user.handle);
+    this.posts.concat(await GetWall(session.user.handle));
+    console.log(this.posts);
+
+    this.exercises = await GetAllLog(session.user.handle);
+    this.exercises.concat(await GetLog(session.user.handle));
+    console.log(this.exercises);
   },
   methods: {
-    async remove(post, i) {
-      console.log({ post });
+    async delete(post, i) {
       const response = await Delete(post._id);
       if (response.deleted) {
         this.posts.splice(i, 1);
       }
     },
-    // async add() {
-    //   const response = await Add(this.newPost);
-    //   console.log({ response });
-    //   if (response) {
-    //     this.posts.unshift(this.newPost);
-    //     this.newPost = newPost();
-    //   }
-    // },
   },
 };
 </script>

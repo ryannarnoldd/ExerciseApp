@@ -58,9 +58,9 @@ const addOwnerPipeline = [
         from: "users",
         localField: 'user_handle',
         foreignField: 'handle',
-        as: 'owner',
+        as: 'user',
     }},
-    {$unwind: "$owner"},
+    {$unwind: "$user"},
     { $project: { "owner.password": 0}}
 ];
 
@@ -73,11 +73,11 @@ module.exports.GetAll = function GetAll() {
     return collection.aggregate(addOwnerPipeline).toArray();
 }
 
-module.exports.GetWall = function GetWall(handle) {
+module.exports.GetLog = function GetWall(handle) {
     return collection.aggregate(addOwnerPipeline).match({ user_handle: handle }).toArray();
 }
 
-module.exports.GetFeed = async function (handle) {
+module.exports.GetAllLog = async function (handle) {
     const user = await Users.collection.findOne({ handle });
     if (!user) { throw { code: 404, msg: "User not found" } }
     const targets = user.following.filter(x=> x.isApproved).map(x=> x.handle).concat(handle)
@@ -114,7 +114,7 @@ module.exports.Update = async function Update(exercise_id, exercise) {
     return results.value;
 }
 
-module.exports.Delete = async function Delete(exercise_id) {
+module.exports.Remove = async function Delete(exercise_id) {
     const results = await collection.findOneAndDelete({_id: new ObjectId(exercise_id) })
 
     return results.value;
@@ -124,6 +124,7 @@ module.exports.Search = q => collection.find({ description: new RegExp(q,"i") })
 
 module.exports.Seed = async ()=>{
     for (const x of list) {
+        collection.deleteMany();
         await this.Add(x)
     }
 }

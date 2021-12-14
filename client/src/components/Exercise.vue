@@ -2,29 +2,28 @@
   <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img :src="post.src" :alt="post.alt">
-         <button v-if="post.user.handle === Session.user.handle" class="delete" @click="$emit('remove')"></button>
+         <button v-if="exercise.user.handle === Session.user.handle" class="delete" @click="$emit('remove')"></button>
     </figure>
   </div>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <img :src="post.user.pic" alt="Placeholder image" />
+            <img :src="exercise.user.pic" alt="Placeholder image" />
           </figure>
         </div>
         <div class="media-content">
           <p class="title is-4">
-            {{ post.user.firstName }} {{ post.user.lastName }}
+            {{ exercise.user.firstName }} {{ exercise.user.lastName }}
           </p>
-          <p class="subtitle is-6">{{ post.user.handle }}</p>
+          <p class="subtitle is-6">{{ exercise.user.handle }}</p>
         </div>
       </div>
 
       <div class="content">
-        {{ post.title }}
+        {{ exercise.caption }}
         <br />
-        <time :datetime="post.time">{{ prettyDate }}</time>
+        <time :datetime="exercise.time">{{ prettyDate }}</time>
       </div>
     </div>
   </div>
@@ -38,12 +37,12 @@ export default {
         Session
     }),
     props: {
-        post: Object
+        exercise: Object
     },
     computed: {
         prettyDate(){
-            if(this.post.time && this.post.time.toDateString){
-                return this.post.time.toDateString()
+            if(this.exercise.time && this.exercise.time.toDateString){
+                return this.exercise.time.toDateString()
             }else{
                 return 'Never'
             }

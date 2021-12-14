@@ -10,14 +10,14 @@ app
             .catch(next)
     })
 
-    .get("/wall/:handle", (req, res, next) => {
-        model.GetWall(req.params.handle)
+    .get("/log/:handle", (req, res, next) => {
+        model.GetLog(req.params.handle)
             .then(x => res.send(x))
             .catch(next)
     })
 
-    .get("/feed/:handle", (req, res, next) => {
-        model.GetFeed(req.params.handle)
+    .get("/alllog/:handle", (req, res, next) => {
+        model.GetAllLog(req.params.handle)
             .then(x => res.send(x))
             .catch(next)
     })

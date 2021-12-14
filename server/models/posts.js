@@ -1,14 +1,13 @@
-const Exercises = require( "./exercises");
+const Users = require('./users');
 const { ObjectId } = require('bson');
 const { client } = require('./mongo');
-const Users = require('./users');
 
 const collection = client.db(process.env.MONGO_DB).collection('posts');
 module.exports.collection = collection;
 
 const list = [
     { 
-        src: "https://bulma.io/images/placeholders/1280x960.png",
+        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "Placeholder image",
         caption: "Lorem Ipsom",
         time: Date(),
@@ -16,15 +15,15 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://bulma.io/images/placeholders/1280x960.png",
+        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "Placeholder image",
-        caption: "We want Moshiach Now",
+        caption: "We want Moshiach NOW PLEASE!",
         time: Date(),
         user_handle: "@vp",
         isPublic: true,
     },
     { 
-        src: "https://scontent-lga3-2.xx.fbcdn.net/v/t31.18172-8/p720x720/886090_10100137903372610_773365632_o.jpg?_nc_cat=101&ccb=1-5&_nc_sid=ba80b0&_nc_ohc=DWVdkKM2PwQAX_tAc5p&_nc_ht=scontent-lga3-2.xx&oh=d9d284fef84a57b1a824932d5fd2da20&oe=618A0203",
+        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "Purim in SUB #100",
         caption: "What a purim to remember",
         time: Date(),
@@ -32,7 +31,7 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/s600x600/244029201_10167312248050347_4050463819121596219_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=oaf-csovSFEAX-I2hxQ&_nc_ht=scontent-lga3-2.xx&oh=8466fcd68032477fab99306ba1a6e800&oe=61895C64",
+        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "Mug with slogan",
         caption: "Never be afraid to try something new. The ark was built by amateurs and the Titanic by professionals",
         time: Date(),
@@ -40,7 +39,7 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/p180x540/242759506_10102663165018030_5506732176336636339_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_ohc=LJFWaOTJXvUAX-skiU3&_nc_ht=scontent-lga3-2.xx&oh=e6a03799ccf969c3b3fe62a7b266b8b9&oe=618C38F8",
+        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "The family",
         caption: "The whole family. All the kids hiking together. Sukkot Vacation.",
         time: Date(),
@@ -54,9 +53,9 @@ const addOwnerPipeline = [
         from: "users",
         localField: 'user_handle',
         foreignField: 'handle',
-        as: 'owner',
+        as: 'user',
     }},
-    {$unwind: "$owner"},
+    {$unwind: "$user"},
     { $project: { "owner.password": 0}}
 ];
 
@@ -119,6 +118,7 @@ module.exports.Delete = async function Delete(post_id) {
 module.exports.Search = q => collection.find({ caption: new RegExp(q,"i") }).toArray();
 
 module.exports.Seed = async ()=>{
+    collection.deleteMany();
     for (const x of list) {
         await this.Add(x)
     }

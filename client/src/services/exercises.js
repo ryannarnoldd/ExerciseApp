@@ -4,12 +4,12 @@ export function GetAll() {
     return api('exercises');
 }
 
-export function GetWall(handle) {
-    return api('exercises/wall/' + handle);
+export function GetLog(handle) {
+    return api('exercises/alllog/' + handle);
 }
 
-export function GetFeed(handle) {
-    return api('exercises/feed/' + handle);
+export function GetAllLog(handle) {
+    return api('exercises/log/' + handle);
 }
 
 export function Get(exercise_id) { 
@@ -22,6 +22,6 @@ export function Add(exercise) {
 export function Update(exercise_id, exercise) {
     return { exercise_id, exercise };
 }
-export function Delete(exercise_id) {
+export function Remove(exercise_id) {
     return api('exercises/' + exercise_id, {}, 'DELETE');
 }
