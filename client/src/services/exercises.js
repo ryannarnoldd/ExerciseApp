@@ -22,6 +22,6 @@ export function Add(exercise) {
 export function Update(exercise_id, exercise) {
     return { exercise_id, exercise };
 }
-export function Remove(exercise_id) {
+export function Unlog(exercise_id) {
     return api('exercises/' + exercise_id, {}, 'DELETE');
 }

@@ -47,7 +47,7 @@ app
     })
     
     .delete("/:id", (req, res, next) => {
-        model.Delete(req.params.id)
+        model.Unlog(req.params.id)
             .then(x => res.send({ deleted: x }))
             .catch(next)
     })

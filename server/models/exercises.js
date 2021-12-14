@@ -114,7 +114,7 @@ module.exports.Update = async function Update(exercise_id, exercise) {
     return results.value;
 }
 
-module.exports.Remove = async function Delete(exercise_id) {
+module.exports.Unlog = async function Unlog(exercise_id) {
     const results = await collection.findOneAndDelete({_id: new ObjectId(exercise_id) })
 
     return results.value;
@@ -123,8 +123,8 @@ module.exports.Remove = async function Delete(exercise_id) {
 module.exports.Search = q => collection.find({ description: new RegExp(q,"i") }).toArray();
 
 module.exports.Seed = async ()=>{
+    collection.deleteMany();
     for (const x of list) {
-        collection.deleteMany();
         await this.Add(x)
     }
 }

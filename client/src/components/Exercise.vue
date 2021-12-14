@@ -1,11 +1,20 @@
-<template>
+  <template>
   <div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-         <button v-if="exercise.user.handle === Session.user.handle" class="delete" @click="$emit('remove')"></button>
-    </figure>
-  </div>
     <div class="card-content">
+      <div class="content">
+          <button v-if="exercise.user.handle === Session.user.handle" class="delete" @click="$emit('remove')"></button>
+
+        <h1>
+          <b>{{ exercise.title }}<br /></b>
+        </h1>
+        <hr />
+        Activity: <b>{{ exercise.type }}</b
+        ><br />
+        Caloried Burned: <b>{{ exercise.calories }}</b
+        ><br />
+        Workout Minutes: <b>{{ exercise.duration }} minutes</b><hr />
+      </div>
+
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
@@ -13,43 +22,38 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">
-            {{ exercise.user.firstName }} {{ exercise.user.lastName }}
+          <p class="subtitle is-6">
+            <b>{{ exercise.user.firstName }} {{ exercise.user.lastName }}</b> <br>
+            {{ exercise.user.handle }}
+            <time class="small" :datetime="exercise.time">{{ prettyDate }}</time>
           </p>
-          <p class="subtitle is-6">{{ exercise.user.handle }}</p>
         </div>
-      </div>
-
-      <div class="content">
-        {{ exercise.caption }}
-        <br />
-        <time :datetime="exercise.time">{{ prettyDate }}</time>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Session from "../services/session"
+import Session from "../services/session";
 
 export default {
-    data: ()=>({
-        Session
-    }),
-    props: {
-        exercise: Object
+  data: () => ({
+    Session,
+  }),
+  props: {
+    exercise: Object,
+  },
+  computed: {
+    prettyDate() {
+        
+      if (this.exercise.time) {
+        return this.exercise.time.substring(0, 10);
+      } else {
+        return "Never";
+      }
     },
-    computed: {
-        prettyDate(){
-            if(this.exercise.time && this.exercise.time.toDateString){
-                return this.exercise.time.toDateString()
-            }else{
-                return 'Never'
-            }
-            
-        }
-    }
-}
+  },
+};
 </script>
 
 <style>
