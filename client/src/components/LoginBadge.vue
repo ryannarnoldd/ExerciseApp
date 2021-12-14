@@ -22,7 +22,7 @@ export default {
         register() {
         },
         login() {
-            this.Session.Login();
+            this.$router.push('/login');
         }
     },
     computed:{

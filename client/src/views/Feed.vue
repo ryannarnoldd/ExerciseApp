@@ -21,8 +21,8 @@
       <div class="column is-half is-offset-one-quarter">
         <!-- <post-edit :new-post="newPost" @add="add()" /> -->
 
-            <div class="post" v-for=" (i, p) in posts" :key="p.src">
-                <Post :post="p" @remove="remove(i, p)" />
+            <div class="post" v-for=" (p, i) in posts" :key="p.src">
+                <post :post="p" @remove="remove(p, i)" />
             </div>
       </div>
 

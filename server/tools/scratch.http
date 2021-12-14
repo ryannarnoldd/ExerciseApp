@@ -133,4 +133,4 @@ http://localhost:3100/exercises/61afab985756e72f290aa484
 POST http://localhost:3100/users/test
 
 ###
-http://localhost:3100/posts/feed/@vp
+POST http://localhost:3100/posts/seed
