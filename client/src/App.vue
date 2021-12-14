@@ -1,25 +1,30 @@
 <template>
     <div class="container">
-        <Nav />
-        <messages />
-        <router-view />
-        <Footer />
+        <div class="columns">
+            <div class="column">
+                <Nav />
+                <Messages />
+                <router-view/>  
+                <Footer />               
+            </div>
+        </div>
+       
     </div>
+
 </template>
 
 <style lang="scss">
 </style>
 
 <script>
-import Nav from "./components/Nav";
-import Footer from './components/Footer';
 import Messages from './components/Messages.vue';
-
+import Footer from './components/Footer.vue';
+import Nav from "./components/Nav";
 export default {
     components: {
         Nav,
         Footer,
         Messages
     }
-};
+}
 </script>

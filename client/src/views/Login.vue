@@ -66,10 +66,9 @@ export default {
         email: null,
         password: null,
         Session
-
     }),
     methods: {
-        login() {
+        login(){
             this.Session.Login(this.email, this.password);
         }
     }

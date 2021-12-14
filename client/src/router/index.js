@@ -1,26 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Session from '../services/session'
-/**
+
 import Home from '../views/Home.vue'
-import ContactUs from '../views/ContactUs.vue'
-import Friends from '../views/Friends.vue'
-import Help from '../views/Help.vue'
-import Login from '../views/Login.vue'
-import Nutrition from '../views/Nutrition.vue'
-import Register from '../views/Register.vue'
-import Reports from '../views/Reports.vue'
-import Settings from '../views/Settings.vue'
-import Share from '../views/Share.vue'
-import Track from '../views/Track.vue'
-import Trainers from '../views/Trainers.vue'
-*/
+import Feed from '../views/Feed.vue'
+import Profile from '../views/Profile.vue'
+// import ContactUs from '../views/ContactUs.vue'
+// import Friends from '../views/Friends.vue'
+// import Help from '../views/Help.vue'
+// import Login from '../views/Login.vue'
+// import Nutrition from '../views/Nutrition.vue'
+// import Register from '../views/Register.vue'
+// import Reports from '../views/Reports.vue'
+// import Settings from '../views/Settings.vue'
+// import Share from '../views/Share.vue'
+// import Track from '../views/Track.vue'
+// import Trainers from '../views/Trainers.vue'
+
 
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: Home
   },
   {
     path: '/contactus',
@@ -30,8 +32,8 @@ const routes = [
   {
     path: '/feed',
     name: 'Feed',
-    component: () => import('../views/Feed.vue'),
-    // meta: { requiresLogin: true}
+    component: Feed,
+    meta: { requiresLogin: true }
   },
   {
     path: '/friends',
@@ -54,6 +56,12 @@ const routes = [
     name: 'Nutrition',
     component: () => import('../views/Nutrition.vue'),
     // meta: { requiresLogin: true}
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: { requiresLogin: true }
   },
   {
     path: '/register',
@@ -95,10 +103,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.meta.requiresLogin && !Session.user) {
-    next('/login')
+  if (to.meta.requiresLogin && !Session.user) {
+    next('/login');
   } else {
-    next()
+    next();
   }
 })
 

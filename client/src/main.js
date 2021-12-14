@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/css/all.css';
 import 'bulma'
 
 import { Notification, Config } from '@oruga-ui/oruga-next'

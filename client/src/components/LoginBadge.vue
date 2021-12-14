@@ -22,7 +22,7 @@ export default {
         register() {
         },
         login() {
-            this.Session.login();
+            this.Session.Login();
         }
     },
     computed:{
