@@ -14,7 +14,7 @@
         <hr />
         Activity: <b>{{ exercise.type }}</b
         ><br />
-        Caloried Burned: <b>{{ exercise.calories }}</b
+        Calories Burned: <b>{{ exercise.calories }}</b
         ><br />
         Workout Minutes: <b>{{ exercise.duration }} minutes</b>
         <hr />
@@ -59,7 +59,7 @@ export default {
       if (this.exercise.time) {
         return this.exercise.time.substring(0, 10);
       } else {
-        return "Never";
+        return "Now";
       }
     },
   },

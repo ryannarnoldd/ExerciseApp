@@ -35,7 +35,7 @@ app
     })
 
     .post("/", (req, res, next) => {
-        model.Add(req.body)
+        model.Log(req.body)
             .then(x => res.status(201).send(x))
             .catch(next)
     })

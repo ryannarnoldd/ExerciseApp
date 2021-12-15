@@ -82,7 +82,7 @@ const routes = [
     path: '/share',
     name: 'Share',
     component: () => import('../views/Share.vue'),
-    // meta: { requiresLogin: true}
+    meta: { requiresLogin: true}
   },
   {
     path: '/track',

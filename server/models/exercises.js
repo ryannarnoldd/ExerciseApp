@@ -91,7 +91,7 @@ module.exports.Get = function Get(exercise_id) {
     return collection.findOne({_id: new ObjectId(exercise_id) }); 
 }
 
-module.exports.Add = async function Add(exercise) {
+module.exports.Log = async function Log(exercise) {
     if(!exercise.user_handle){
         throw {code: 422, msg: "Exercise must have an Owner"}
     }
@@ -125,6 +125,6 @@ module.exports.Search = q => collection.find({ description: new RegExp(q,"i") })
 module.exports.Seed = async ()=>{
     collection.deleteMany();
     for (const x of list) {
-        await this.Add(x)
+        await this.Log(x)
     }
 }

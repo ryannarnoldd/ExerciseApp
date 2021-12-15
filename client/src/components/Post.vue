@@ -47,7 +47,7 @@ export default {
       if (this.post.time) {
         return this.post.time.substring(0, 10);
       } else {
-        return "Never";
+        return "Now";
       }
     },
   },

@@ -107,6 +107,6 @@ module.exports.Login = async function Login(handle, password) {
 module.exports.Seed = async function Seed() {
     collection.deleteMany();
     for (const user of list) {
-        await module.exports.Add(user);
+        await module.exports.Register(user);
     }
 }

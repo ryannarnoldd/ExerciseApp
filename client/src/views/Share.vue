@@ -1,51 +1,87 @@
 <template>
     <div class="container is-max-desktop">
-        <form action="" method="post">
-            <h2 class="title is-2 has-text-centered is-capitalized">Share Your Exercise!</h2>
-            <h6 class="subtitle has-text-centered">Share your exercies with your friends and the rest of the world.</h6>
+        <h2 class="title is-large has-text-centered is-capitalized">
+            <em>Share!</em>
+        </h2>
+        <h6 class="subtitle has-text-centered">
+            This is where you are able to share your social, and workout, journey to the
+            rest of the world and all other <em>Fitizens</em>.
+        </h6>
 
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Exercise Name</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <input class="input" type="name" placeholder="Exercise Name">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Description</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <textarea class="textarea" type="description" placeholder="Description"></textarea>
-                        </div>
-                    </div>
+        <div class="columns">
+            <div class="column">
+                <h6 class="title has-text-centered">
+                    <em>Posts!</em>
+                </h6>
+                <post-edit :new-post="newPost" @add="add()" />
+
+                <div class="column">
+                    <post :post="newPost" />
                 </div>
             </div>
-            
-            <div class="field is-horizontal">
-                <div class="field-label"></div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-dark is-centered">Share</button>
-                        </div>
-                    </div>
+            <div class="column">
+                <h6 class="title has-text-centered">
+                    <em>Exercises!</em>
+                </h6>
+                <exercise-edit :new-exercise="newExercise" @log="log()" />
+
+                <div class="column">
+                    <exercise :exercise="newExercise" />
                 </div>
             </div>
-        </form>
         </div>
+    </div>
 </template>
 
 <script>
-export default {
+import Post from '../components/Post.vue';
+import session from "../services/session";
+import { Add } from "../services/posts";
+import PostEdit from "../components/Post-edit.vue";
+import Exercise from "../components/Exercise.vue";
+import ExerciseEdit from "../components/Exercise-edit.vue";
+import { Log } from "../services/exercises";
+import Router from "../router";
 
+const newPost = ()=> ({ user: session.user, user_handle: session.user.handle});
+const newExercise = ()=> ({ user: session.user, user_handle: session.user.handle});
+
+export default {
+    components: {
+        Post,
+        PostEdit,
+        Exercise,
+        ExerciseEdit
+    },
+    data: ()=> ({
+        newPost: newPost(),
+        newExercise: newExercise(),
+        session,
+        Router
+    }),
+    async mounted(){
+        
+    },
+    methods: {
+
+        async add(){
+            const response = await Add(this.newPost);
+            if (response.added) {
+                this.newPost = newPost();
+                Router.push('/feed');
+            }
+        },
+        async log(){
+            const response = await Log(this.newExercise);
+            console.log(response);
+        }
+    }
 }
+
 </script>
+
+<style>
+    .card {
+        margin-bottom: 10px;
+    }
+</style>

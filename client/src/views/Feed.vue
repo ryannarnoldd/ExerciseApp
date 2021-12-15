@@ -13,7 +13,7 @@
                 <h6 class="title has-text-centered">
                     <em>Posts!</em>
                 </h6>
-                <div class="post" v-for="(p, i) in posts" :key="p.src">
+                <div class="post" v-for="(p, i) in posts.slice().reverse()" :key="p.id">
                     <post :post="p" @remove="remove(p, i)" />
                     <br>
                 </div>
@@ -22,7 +22,7 @@
                 <h6 class="title has-text-centered">
                     <em>Exercise!</em>
                 </h6>
-                <div class="exercise" v-for="(e, i) in exercises" :key="e.handle">
+                <div class="exercise" v-for="(e, i) in exercises.slice().reverse()" :key="e.id">
                     <exercise :exercise="e" @remove="unlog(e, i)" />
                     <br>
                 </div>
@@ -60,13 +60,13 @@ export default {
         async remove(p, i) {
             const response = await Delete(p._id);
             if (response.deleted) {
-                this.posts.splice(i, 1);
+                this.posts.splice(this.posts.length - i - 1, 1);
             }
         },
         async unlog(e, i) {
             const response = await Unlog(e._id);
             if (response.deleted) {
-                this.exercises.splice(i, 1);
+                this.exercises.splice(this.exercises.length - i - 1, 1);
             }
         }
     }
