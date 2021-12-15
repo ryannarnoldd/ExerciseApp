@@ -55,7 +55,7 @@ const session = {
 
             this.user = response.user;
 
-            router.push(this.toRoute);
+            session.router.push(this.toRoute);
 
         } catch (error) {
             this.Error(error);

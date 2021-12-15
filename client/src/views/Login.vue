@@ -31,14 +31,12 @@
             </div>
 
             <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label"></label>
-                </div>
+                <div class="field-label"></div>
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                             <input type="checkbox">Remember Me
-                        </div>
+                            <router-link to="/register">Don't have an account?</router-link>
+                        </div> 
                     </div>
                 </div>
             </div>

@@ -39,12 +39,18 @@ const routes = [
     path: '/friends',
     name: 'Friends',
     component: () => import('../views/Friends.vue'),
-    // meta: { requiresLogin: true}
+    meta: { requiresLogin: true}
   },
   {
     path: '/help',
     name: 'Help',
     component: () => import('../views/Help.vue')
+  },
+  {
+    path: '/log',
+    name: 'Log',
+    component: () => import('../views/Log.vue'),
+    meta: { requiresLogin: true }
   },
   {
     path: '/login',

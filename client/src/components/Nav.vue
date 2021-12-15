@@ -7,6 +7,7 @@
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
         </div>
 
@@ -14,6 +15,7 @@
             <div class="navbar-start">
                 <router-link class="navbar-item is-tab" to="/share" active-class="is-active">Share</router-link>
                 <router-link class="navbar-item is-tab" to="/feed" active-class="is-active">Feed</router-link>
+                <router-link class="navbar-item is-tab" to="/log" active-class="is-active">Log</router-link>
                 <router-link class="navbar-item is-tab" to="/friends" active-class="is-active">Friends</router-link>
 
                 <div class="navbar-item has-dropdown is-hoverable">

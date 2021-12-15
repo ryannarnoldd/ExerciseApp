@@ -14,8 +14,7 @@ const list = [
         password: 'me',
         isAdmin: true,
         email: "plotkinm@newpaltz.edu",
-        following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true },],
-        get name() { return this.firstName + ' ' + this.lastName },
+        following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true }]
     },
     {
         firstName: 'Kamala',
