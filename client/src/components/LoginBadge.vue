@@ -8,7 +8,7 @@
         </router-link>
     </div>
     <div v-else>
-        Welcome, {{name}}!
+        <router-link class="navbar-item is-tab" to="/profile" active-class="is-active">{{Session.user.firstName}}'s Profile</router-link>
     </div>
 </template>
 

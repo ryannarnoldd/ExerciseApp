@@ -1,4 +1,3 @@
-
 <template>
     <div class="container is-max-desktop">
         <h2 class="title is-large has-text-centered is-capitalized">
@@ -8,16 +7,23 @@
             This is where you are able to view all of the content posted from other
             <em>Fitizens</em> from all over the world.
         </h6>
-        <div class="columns">
-            <div class="column is-half is-offset-one-quarter">
-                
-                <div class="exercise" v-for="(e, i) in exercises" :key="e.handle">
-                    <exercise :exercise="e" @remove="unlog(e, i)" />
-                    <br>
-                </div>
 
+        <div class="columns">
+            <div class="column">
+                <h6 class="subtitle has-text-centered">
+                    <em>Posts!</em>
+                </h6>
                 <div class="post" v-for="(p, i) in posts" :key="p.src">
                     <post :post="p" @remove="remove(p, i)" />
+                    <br>
+                </div>
+            </div>
+            <div class="column">
+                <h6 class="subtitle has-text-centered">
+                    <em>Exercise!</em>
+                </h6>
+                <div class="exercise" v-for="(e, i) in exercises" :key="e.handle">
+                    <exercise :exercise="e" @remove="unlog(e, i)" />
                     <br>
                 </div>
             </div>
@@ -81,7 +87,6 @@ export default {
                 </div> */
 
 /* 
-Feed remove to work.
 Share to add.
 // profile management.
     whoever user is signed in, can view their profile.
