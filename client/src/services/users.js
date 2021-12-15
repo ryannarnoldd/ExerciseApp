@@ -12,7 +12,7 @@ export function GetByHandle(handle) {
     return api('users/byhandle/' + handle); 
 }
 
-export function Add(user) {
+export function Register(user) {
     return api('users/register', user);
 }
 

@@ -51,9 +51,9 @@ app
     })
 
     .post("/register", (req, res, next) =>{
-        model.Add(req.body)
+        model.Register(req.body)
             .then(user=>{
-                res.status(201).send(user);
+                res.send(user);
             })
             .catch(next) 
     })

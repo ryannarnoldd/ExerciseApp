@@ -2,7 +2,21 @@
     <div class="container is-max-desktop">
         <h2 class="title is-2 has-text-centered is-capitalized">Get Started by Creating Your Account!</h2>
         <h6 class="subtitle has-text-centered">Let's create your Fitizen account and take the first steps towards happiness and health.</h6>
-        <form action="" method="post">
+        <form @submit.prevent="register()">
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Handle</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" placeholder="What do you want everyone to search you by... @handle" v-model="handle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Name</label>
@@ -10,12 +24,12 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="fname" placeholder="First Name">
+                            <input class="input" type="fname" placeholder="First Name" v-model="firstName">
                         </p>
                     </div>
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="lname" placeholder="Last Email">
+                            <input class="input" type="lname" placeholder="Last Name" v-model="lastName">
                         </p>
                     </div>
                 </div>
@@ -28,7 +42,7 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input class="input" type="email" placeholder="Email">
+                            <input class="input" type="email" placeholder="Email" v-model="email">
                         </div>
                     </div>
                 </div>
@@ -46,7 +60,7 @@
                     </div>
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="password" placeholder="Confirm Password">
+                            <input class="input" type="password" placeholder="Confirm Password" v-model="password">
                         </p>
                     </div>
                 </div>
@@ -54,27 +68,13 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">D.O.B./Gender</label>
+                    <label class="label">Profile Pic</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="date" placeholder="Date of Birth">
+                            <input class="input" type="url" placeholder="Choose a nice URL profile picture!" v-model="pic">
                         </p>
-                    </div>
-                    <div class="field">
-                        <span class="control is-expanded">
-                            <div class="control">
-                                <div class="select is-fullwidth" type="topic">
-                                    <select>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Non-binary</option>
-                                        <option>Prefer not to say</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </span>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,34 @@
 </template>
 
 <script>
-export default {
+import Session from "../services/session";
 
+export default {
+    data: ()=>({
+        firstName: null,
+        lastName: null,
+        handle: null,
+        pic: null,
+        password: null,
+        isAdmin: false,
+        email: null,
+        following: [{ handle: '@vp', isApproved: true },{ handle: '@JewPaltz', isApproved: true } ],
+        Session 
+    }),
+    methods: {
+        register() {
+
+            this.Session.Register({ 
+                "firstName": this.firstName,
+                "lastName": this.lastName,
+                "handle": this.handle,
+                "pic": this.pic,
+                "password": this.password,
+                "isAdmin": this.isAdmin,
+                "email": this.email,
+                "following": this.following
+            });
+        }
+    }
 }
 </script>

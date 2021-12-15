@@ -3,6 +3,20 @@
         <h2 class="title is-2 has-text-centered is-capitalized">Get Started by Creating Your Account!</h2>
         <h6 class="subtitle has-text-centered">Let's create your Fitizen account and take the first steps towards happiness and health.</h6>
         <form action="" method="post">
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Handle</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" placeholder="What do you want everyone to search you by... @handle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Name</label>
@@ -15,7 +29,7 @@
                     </div>
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="lname" placeholder="Last Email">
+                            <input class="input" type="lname" placeholder="Last Name">
                         </p>
                     </div>
                 </div>
@@ -54,27 +68,13 @@
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">D.O.B./Gender</label>
+                    <label class="label">Profile Pic</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded">
-                            <input class="input" type="date" placeholder="Date of Birth">
+                            <input class="input" type="url" placeholder="Choose a nice URL profile picture!">
                         </p>
-                    </div>
-                    <div class="field">
-                        <span class="control is-expanded">
-                            <div class="control">
-                                <div class="select is-fullwidth" type="topic">
-                                    <select>
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Non-binary</option>
-                                        <option>Prefer not to say</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </span>
                     </div>
                 </div>
             </div>

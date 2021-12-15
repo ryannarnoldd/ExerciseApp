@@ -13,9 +13,7 @@ const list = [
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         password: 'me',
         isAdmin: true,
-        emails: [
-            "plotkinm@newpaltz.edu"
-        ],
+        email: "plotkinm@newpaltz.edu",
         following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true },],
         get name() { return this.firstName + ' ' + this.lastName },
     },
@@ -26,9 +24,7 @@ const list = [
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         password: 'Her',
         isAdmin: true,
-        emails: [
-            "vp@wh.com"
-        ],
+        emails: "vp@wh.com",
         following: [{ handle: '@johnsmith', isApproved: true },],
     },
     {
@@ -38,9 +34,7 @@ const list = [
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         password: 'BeepBop',
         isAdmin: true,
-        emails: [
-            "john@smith.com"
-        ],
+        emails: "john@smith.com",
         following: [{ handle: '@vp', isApproved: true },],
     },
 
@@ -52,7 +46,8 @@ module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) 
 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }));
 
-module.exports.Add = async function Add(user) {
+module.exports.Register = async function Register(user) {
+    console.log('Registering user:', user);
     if (!user.firstName) {
         return Promise.reject({ code: 422, msg: "First Name is required" })
     }
