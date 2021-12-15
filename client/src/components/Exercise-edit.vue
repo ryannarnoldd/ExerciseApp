@@ -1,5 +1,5 @@
 <template>
-    <form class="card">
+    <form class="card" @submit.prevent="$emit('log')">
         <div class="card-content">
             <div class="content">
                 <div class="field">
@@ -60,7 +60,7 @@
         </div>
         <footer class="card-footer">
             <button class="button is-link card-footer-item" type="submit">Submit</button>
-            <button class="button is-link is-light card-footer-item" type="reset">Cancel</button>
+            <button class="button is-link is-light card-footer-item" type="reset" @click="resetToo">Cancel</button>
 
         </footer>
     </form>
@@ -68,6 +68,7 @@
 
 <script>
 export default {
+
     props: {
         newExercise: Object
     },
@@ -79,6 +80,12 @@ export default {
     watch: {
         newExercise() {
             this.exercise = this.newExercise;
+        }
+    },
+    methods: {
+        resetToo(){
+            this.exercise = { };
+            this.$router.push('/feed');
         }
     }
 }

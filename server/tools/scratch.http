@@ -130,6 +130,19 @@ POST http://localhost:3100/exercises/seed
 http://localhost:3100/exercises/61afab985756e72f290aa484
 
 ###
+POST http://localhost:3100/exercises/
+Content-Type: application/json
+
+{
+    "title": "Exercise 1",
+    "type": "Running",
+    "calories": "500",
+    "duration": "30",
+    "user_handle": "@vp",
+    "time": "new Date()"
+}
+
+###
 POST http://localhost:3100/users/seed
 
 ###

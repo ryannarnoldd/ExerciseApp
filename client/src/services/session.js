@@ -39,10 +39,9 @@ const session = {
 
         try {
             const response = await Add(post);
-
             this.user = response.user;
 
-            router.push(this.toRoute);
+            //router.push(this.toRoute);
 
         } catch (error) {
             this.Error(error);
@@ -51,11 +50,11 @@ const session = {
     async Log(exercise) {
 
         try {
-            const response = await Log(exercise);
+            await Log(exercise);
 
-            this.user = response.user;
+            this.user = exercise.user;
 
-            session.router.push(this.toRoute);
+            //  router.push(this.toRoute);
 
         } catch (error) {
             this.Error(error);

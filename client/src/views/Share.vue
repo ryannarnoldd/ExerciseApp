@@ -64,13 +64,13 @@ export default {
         async add(){
             const response = await Add(this.newPost);
             if (response.added) {
-                this.newPost = newPost();
+                this.newPost = newPost;
             }
         },
         async log(){
             const response = await Log(this.newExercise);
             if (response.added) {
-                this.newExercise = newExercise();
+                this.newExercise = newExercise;
             }
         }
     }
