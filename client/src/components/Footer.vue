@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style>
-
+footer.footer {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    bottom: 0;
+}
 </style>

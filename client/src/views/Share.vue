@@ -41,7 +41,6 @@ import PostEdit from "../components/Post-edit.vue";
 import Exercise from "../components/Exercise.vue";
 import ExerciseEdit from "../components/Exercise-edit.vue";
 import { Log } from "../services/exercises";
-import Router from "../router";
 
 const newPost = ()=> ({ user: session.user, user_handle: session.user.handle});
 const newExercise = ()=> ({ user: session.user, user_handle: session.user.handle});
@@ -66,14 +65,12 @@ export default {
             const response = await Add(this.newPost);
             if (response.added) {
                 this.newPost = newPost();
-                Router.push('/feed');
             }
         },
         async log(){
             const response = await Log(this.newExercise);
             if (response.added) {
                 this.newExercise = newExercise();
-                Router.push('/feed');
             }
         }
     }
