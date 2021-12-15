@@ -10,7 +10,7 @@
 
         <div class="columns">
             <div class="column">
-                <h6 class="subtitle has-text-centered">
+                <h6 class="title has-text-centered">
                     <em>Posts!</em>
                 </h6>
                 <div class="post" v-for="(p, i) in posts" :key="p.src">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="column">
-                <h6 class="subtitle has-text-centered">
+                <h6 class="title has-text-centered">
                     <em>Exercise!</em>
                 </h6>
                 <div class="exercise" v-for="(e, i) in exercises" :key="e.handle">

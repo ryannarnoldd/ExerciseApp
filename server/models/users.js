@@ -60,7 +60,9 @@ module.exports.Register = async function Register(user) {
     const user2 = await collection.insertOne(user);
     user._id = user2.insertedId;
 
-    return { ...user, password: undefined };
+    const data =  { ...user, password: undefined };
+
+    return { user: data };
 }
 
 
