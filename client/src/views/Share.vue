@@ -56,8 +56,6 @@ export default {
     data: ()=> ({
         newPost: newPost(),
         newExercise: newExercise(),
-        session,
-        Router
     }),
     async mounted(){
         
@@ -73,7 +71,10 @@ export default {
         },
         async log(){
             const response = await Log(this.newExercise);
-            console.log(response);
+            if (response.added) {
+                this.newExercise = newExercise();
+                Router.push('/feed');
+            }
         }
     }
 }

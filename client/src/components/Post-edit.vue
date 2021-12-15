@@ -55,6 +55,11 @@ export default {
             post: this.newPost
         }
     },
+    methods: {
+        add(){
+            this.$router.push('/feed');
+        }
+    },
     watch: {
         newPost(){
             this.post = this.newPost;
