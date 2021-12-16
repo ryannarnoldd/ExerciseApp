@@ -20,10 +20,14 @@
       </div>
     </div>
 
+    <h6 class="subtitle has-text-centered">
+      Search for all users, including yourself, to see who else is a <em>Fitizen</em>
+    </h6>
+
     <form>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Search Friends</label>
+          <label class="label">Search Users</label>
         </div>
         <!-- slot:empty -->
         <div class="field-body">
@@ -31,16 +35,16 @@
             <p class="control">
               <o-autocomplete
                 v-model="handle"
-                placeholder="Search for any users! (e.g. @friend)"
+                placeholder="Search for any user! (e.g. @friend)"
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
                 :data="searchFriends"
                 @typing="onSearch"
                 field="handle"
-                @select="(option) => (selected = option)"
-              >
+                @select="(option) => (selected = option)">
               </o-autocomplete>
             </p>
+            <br>
           </div>
         </div>
       </div>
