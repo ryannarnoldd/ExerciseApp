@@ -59,7 +59,7 @@
             </div>
         </div>
         <footer class="card-footer">
-            <button class="button is-link card-footer-item" type="submit">Submit</button>
+            <button class="button is-link is-dark card-footer-item" type="submit">Submit</button>
             <button class="button is-link is-light card-footer-item" type="reset" @click="resetToo">Cancel</button>
 
         </footer>

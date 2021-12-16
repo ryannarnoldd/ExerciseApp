@@ -1,7 +1,11 @@
 <template>
     <div class="container is-max-desktop">
         <h2 class="title is-2 has-text-centered is-capitalized">Check Your Progress with Reports!</h2>
-        <h6 class="subtitle has-text-centered">This is where you are able to see the trends and progress of your fitness journey all in one location.</h6>
+        <h6 class="subtitle has-text-centered">
+            This is where you are able to see the trends and progress of your fitness journey all in one location.
+            <br>
+            This is an upcoming feature to make sure you are kept accountable and on track.
+        </h6>
 
         <div class="field is-horizontal">
             <div class="field-label is-normal">

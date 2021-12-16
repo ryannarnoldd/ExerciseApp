@@ -15,15 +15,12 @@
                                     <div class="select is-fullwidth" type="theme">
                                         <select aria-placeholder="Color Theme">
                                             <option>Default</option>
+                                            <option>Pride</option>
                                             <option>Dark</option>
                                             <option>Light</option>
-                                            <option>Red</option>
-                                            <option>Orange</option>
-                                            <option>Yellow</option>
+                                            <option>Horror</option>
                                             <option>Green</option>
                                             <option>Blue</option>
-                                            <option>Indigo</option>
-                                            <option>Violet</option>
                                             <option>Custom</option>
                                         </select>
                                     </div>
@@ -53,7 +50,7 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <input  type="checkbox"> Use European Date Format
+                            <input type="checkbox"> Use European Date Format
                         </div>
                     </div>
                 </div>

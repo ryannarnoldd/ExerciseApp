@@ -31,7 +31,6 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">More</a>
                     <div class="navbar-dropdown">
-                        <router-link class="navbar-item is-tab" to="/profile" active-class="is-active">Profile</router-link>
                         <router-link class="navbar-item is-tab" to="/settings" active-class="is-active">Settings</router-link>
                         <router-link class="navbar-item is-tab" to="/help" active-class="is-active">Help</router-link>
                         <hr class="navbar-divider">
