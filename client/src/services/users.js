@@ -12,6 +12,10 @@ export function GetByHandle(handle) {
     return api('users/byhandle/' + handle);
 }
 
+export function GetBySearch(search) {
+    return api('users/bysearch/' + search);
+}
+
 export function Register(user) {
     return api('users/register', user);
 }

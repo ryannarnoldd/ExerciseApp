@@ -50,7 +50,7 @@
 
 <script>
 import session from "../services/session";
-import { GetByHandle } from "../services/users";
+import { GetByHandle, GetByText } from "../services/users";
 import Friend from "../components/Friend.vue";
 // import { Update } from "../services/users";
 // import AutoComplete from "../components/AutoComplete.vue";
@@ -419,6 +419,7 @@ const data = [
 export default {
   components: {
     Friend,
+
     // AutoComplete,
   },
   data: () => ({
@@ -466,6 +467,9 @@ export default {
       }
       // update the user through the database now with the new changes.
       await session.user.Update(session.user.id, session.user);
+    },
+    async onNewText(newText) {
+      this.allUsers = await GetByText(newText);
     },
   },
 };
