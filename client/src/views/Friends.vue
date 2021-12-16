@@ -24,13 +24,12 @@
       Search for all users, including yourself, to see who else is a <em>Fitizen</em>
     </h6>
 
-    <form>
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">Search Users</label>
         </div>
         <!-- slot:empty -->
-        <div class="field-body">
+        <div class="field-body is-horizontal">
           <div class="field">
             <p class="control">
               <o-autocomplete
@@ -46,9 +45,15 @@
             </p>
             <br>
           </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-dark">
+                Add Friend
+              </button>
+            </p>
+          </div>
         </div>
       </div>
-    </form>
   </div>
 </template>
 
@@ -85,7 +90,7 @@ export default {
             .toString()
             .toLowerCase()
             // Not the currnet user's handle...
-            .indexOf(session.user.handle.toLowerCase()) === -1
+            // .indexOf(session.user.handle.toLowerCase()) === -1
         );
       });
     },
