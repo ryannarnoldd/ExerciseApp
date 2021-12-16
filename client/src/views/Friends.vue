@@ -25,21 +25,24 @@
         <div class="field-label is-normal">
           <label class="label">Search Friends</label>
         </div>
+        <!-- slot:empty -->
         <div class="field-body">
           <div class="field">
             <p class="control">
               <o-autocomplete
                 v-model="name"
-                @change="searchFriends"
                 placeholder="e.g. Anne"
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
-                :data="filteredDataObj"
+                :data="searchFriends"
                 field="user.first_name"
                 @select="(option) => (selected = option)"
               >
               </o-autocomplete>
             </p>
+          </div>
+          <div class="field">
+            <auto-complete >
           </div>
         </div>
       </div>
@@ -52,15 +55,24 @@ import session from "../services/session";
 import { GetByHandle } from "../services/users";
 import Friend from "../components/Friend.vue";
 // import { Update } from "../services/users";
+import AutoComplete from "../components/AutoComplete.vue";
 
 export default {
   components: {
     Friend,
+    AutoComplete,
   },
   data: () => ({
+    testData: [
+      { stuff: "Anne" },
+      { stuff: "Bob" },
+      { stuff: "Cindy" },
+      { stuff: "Diane" },
+    ],
     friends: [],
     friendHandles: [],
-    text: '',
+    text: "",
+    selected: null,
   }),
   async mounted() {
     const handles = session.user.following.map((f) => f.handle);
@@ -86,10 +98,12 @@ export default {
       // update the user through the database now with the new changes.
       await session.user.Update(session.user.id, session.user);
     },
-    async searchFriends () {
-      this.text = this.option;
-      console.log(text)
-      // this.friendHandles = await Promise.all(handles.map((h) => GetByText(h)));
+    async searchFriends() {
+      return this.testData.filter((option) => {
+        return (
+          option.toString().toLowerCase().indexOf(this.name.toLowerCase()) >= 0
+        );
+      });
     },
   },
 };

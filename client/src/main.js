@@ -10,8 +10,7 @@ import router from './router'
 
 createApp(App)
     .use(router)
-    .use(Autocomplete)
-    .use(Notification)
+    .use(Notification).use(Autocomplete)
     .use(Config, {
         iconPack: 'fas'
     })
