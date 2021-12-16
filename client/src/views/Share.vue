@@ -6,6 +6,8 @@
     <h6 class="subtitle has-text-centered">
       This is where you are able to share your social, and workout, journey to
       the rest of the world and all other <em>Fitizens</em>.
+      <br>
+      For the time being, you need to only press add one, and then you can go to Feed manually to see your new posts.
     </h6>
 
     <div class="columns">
