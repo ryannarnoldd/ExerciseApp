@@ -30,7 +30,7 @@
           <div class="field">
             <p class="control">
               <o-autocomplete
-                v-model="friend"
+                v-model="handle"
                 placeholder="Search for any users! (e.g. @friend)"
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
@@ -437,18 +437,19 @@ export default {
 
   computed: {
     searchFriends() {
-      if (this.search.length > 0) { 
+      console.log(this.handle)
+      if (this.handle.length > 0) { 
       return this.searchedUsers.filter((option) => {
         return (
           option.user.handle
             .toString()
             .toLowerCase()
-            .indexOf(this.search.toLowerCase()) >= 0
+            .indexOf(this.handle.toLowerCase()) >= 0
         );
       });
       }
       else {
-        return [];
+        return "";
       }
     },
   },
@@ -473,7 +474,12 @@ export default {
       await session.user.Update(session.user.id, session.user);
     },
     async onSearch(search) {
-      this.searchedUsers = await GetBySearch(search);
+      if (search.length > 0) {
+        this.searchedUsers = await GetBySearch(search);
+      }
+      else {
+        this.searchedUsers = [];
+      }
     },
   },
 };
