@@ -45,6 +45,10 @@ module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) 
 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }));
 
+// Create a function that will only get the users that contain a certain string in their handle, not using regex.
+module.exports.GetByText = (text) => collection.find({ handle: { $regex: text, $options: 'i' } }).toArray();
+
+
 module.exports.Register = async function Register(user) {
     console.log('Registering user:', user);
     if (!user.firstName) {

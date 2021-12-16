@@ -27,11 +27,20 @@
         </div>
         <div class="field-body">
           <div class="field">
-            <div class="control">
-              <input class="input" type="search" placeholder="@user" />
-            </div>
+            <p class="control">
+              <o-autocomplete
+                v-model="name"
+                @change="searchFriends"
+                placeholder="e.g. Anne"
+                :keep-first="keepFirst"
+                :open-on-focus="openOnFocus"
+                :data="filteredDataObj"
+                field="user.first_name"
+                @select="(option) => (selected = option)"
+              >
+              </o-autocomplete>
+            </p>
           </div>
-          <button class="button is-dark" @click="addFriend">Add Friend</button>
         </div>
       </div>
     </form>
@@ -50,6 +59,8 @@ export default {
   },
   data: () => ({
     friends: [],
+    friendHandles: [],
+    text: '',
   }),
   async mounted() {
     const handles = session.user.following.map((f) => f.handle);
@@ -74,6 +85,11 @@ export default {
       }
       // update the user through the database now with the new changes.
       await session.user.Update(session.user.id, session.user);
+    },
+    async searchFriends () {
+      this.text = this.option;
+      console.log(text)
+      // this.friendHandles = await Promise.all(handles.map((h) => GetByText(h)));
     },
   },
 };
