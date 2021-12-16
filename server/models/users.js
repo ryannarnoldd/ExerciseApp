@@ -24,7 +24,7 @@ const list = [
         password: 'Her',
         isAdmin: true,
         emails: "vp@wh.com",
-        following: [{ handle: '@johnsmith', isApproved: true },],
+        following: [{ handle: '@johnsmith', isApproved: true },{ handle: '@JewPaltz', isApproved: true }]
     },
     {
         firstName: 'John',
