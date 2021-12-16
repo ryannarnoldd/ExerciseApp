@@ -30,11 +30,11 @@
           <div class="field">
             <p class="control">
               <o-autocomplete
-                v-model="name"
-                placeholder="e.g. Anne"
+                v-model="handle"
+                placeholder="Search for any users! (e.g. @friend)"
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
-                :data="filteredDataObj"
+                :data="searchFriends"
                 @change="onNewText"
                 field="user.handle"
                 @select="(option) => (selected = option)"
@@ -50,7 +50,7 @@
 
 <script>
 import session from "../services/session";
-import { GetByHandle, GetByText } from "../services/users";
+import { GetByHandle, GetBySearch } from "../services/users";
 import Friend from "../components/Friend.vue";
 // import { Update } from "../services/users";
 // import AutoComplete from "../components/AutoComplete.vue";
@@ -419,13 +419,12 @@ const data = [
 export default {
   components: {
     Friend,
-
     // AutoComplete,
   },
   data: () => ({
     data,
     friends: [],
-    allUsers: [],
+    searchedUsers: [],
     keepFirst: false,
     openOnFocus: false,
     handle: "",
@@ -437,7 +436,7 @@ export default {
   },
 
   computed: {
-    filteredDataObj() {
+    searchFriends() {
       return this.data.filter((option) => {
         return (
           option.user.handle
@@ -469,7 +468,7 @@ export default {
       await session.user.Update(session.user.id, session.user);
     },
     async onNewText(newText) {
-      this.allUsers = await GetByText(newText);
+      this.searchedUsers = await GetBySearch(newText);
     },
   },
 };

@@ -28,6 +28,15 @@ app
             .catch(next)
     })
 
+    .get("/bysearch/:search", (req, res, next) => {
+        model.GetBySearch(req.params.search)
+            .then(user => {
+                res.send(user);
+                // ?????
+            })
+            .catch(next)
+    })
+
     .patch("/:user_id", (req, res, next) => {
         model.Update(req.params.user_id, req.body)
             .then(user => res.send(user))

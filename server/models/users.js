@@ -45,6 +45,7 @@ module.exports.Get = user_id => collection.findOne({ _id: new ObjectId(user_id) 
 
 module.exports.GetByHandle = (handle) => collection.findOne({ handle }).then(x => ({ ...x, password: undefined }));
 
+module.exports.GetBySearch = (search) => collection.find({ handle: { $regex: search, $options: 'i' } }).toArray();
 
 module.exports.Register = async function Register(user) {
     console.log('Registering user:', user);
