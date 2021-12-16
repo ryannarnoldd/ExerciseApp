@@ -76,12 +76,12 @@ export default {
   computed: {
     searchFriends() {
       return this.searchedUsers.filter((option) => {
-        console.log("here");
         return (
           option
             .toString()
             .toLowerCase()
-            // .indexOf(this.handle.toLowerCase()) >= 0
+            // Not the currnet user's handle...
+            .indexOf(session.user.handle.toLowerCase()) === -1
         );
       });
     },
@@ -109,7 +109,6 @@ export default {
     async onSearch(search) {
       if (search.length > 0) {
         this.searchedUsers = await GetBySearch(search);
-        console.log('Search complete!')
       }
       else {
         this.searchedUsers = [];
