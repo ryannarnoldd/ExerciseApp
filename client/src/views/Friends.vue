@@ -29,20 +29,13 @@
         <div class="field-body">
           <div class="field">
             <p class="control">
-              <o-autocomplete
-                v-model="name"
-                placeholder="e.g. Anne"
-                :keep-first="keepFirst"
-                :open-on-focus="openOnFocus"
-                :data="searchFriends"
-                field="user.first_name"
-                @select="(option) => (selected = option)"
-              >
-              </o-autocomplete>
+      <o-autocomplete rounded expanded v-model="name" :data="filteredDataArray" placeholder="e.g. jQuery" icon="search" clearable @select="option => selected = option">
+        <template v-slot:"empty" >No results found</template>
+      </o-autocomplete>
             </p>
           </div>
           <div class="field">
-            <auto-complete >
+            <auto-complete :items="results" @select="setResult"></auto-complete>
           </div>
         </div>
       </div>
