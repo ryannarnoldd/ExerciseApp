@@ -30,8 +30,8 @@ app
 
     .get("/bysearch/:search", (req, res, next) => {
         model.GetBySearch(req.params.search)
-            .then(user => {
-                res.send(user);
+            .then(users => {
+                res.send(users);
                 // ?????
             })
             .catch(next)

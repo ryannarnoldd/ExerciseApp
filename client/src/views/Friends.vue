@@ -35,7 +35,7 @@
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
                 :data="searchFriends"
-                @change="onNewText"
+                @typing="onNewText"
                 field="user.handle"
                 @select="(option) => (selected = option)"
               >
@@ -437,7 +437,7 @@ export default {
 
   computed: {
     searchFriends() {
-      return this.data.filter((option) => {
+      return this.searchedUsers.filter((option) => {
         return (
           option.user.handle
             .toString()
