@@ -6,7 +6,7 @@ const collection = client.db(process.env.MONGO_DB).collection('posts');
 module.exports.collection = collection;
 
 const list = [
-    { 
+    {
         src: "https://randomwordgenerator.com/img/picture-generator/gae70ff0c9be5b5f10c08736584b1dcd6308500f6dab9e94e500464a9774c8bbd0a0d6c620b806ad6f7ce814363416e3d_640.jpg",
         alt: "Placeholder image",
         caption: "Lorem Ipsom",
@@ -14,7 +14,7 @@ const list = [
         user_handle: "@johnsmith",
         isPublic: true,
     },
-    { 
+    {
         src: "https://randomwordgenerator.com/img/picture-generator/52e5d64a4c52a514f1dc8460962e33791c3ad6e04e507440772872dc914ec7_640.jpg",
         alt: "Placeholder image",
         caption: "We want Moshiach NOW PLEASE!",
@@ -22,7 +22,7 @@ const list = [
         user_handle: "@vp",
         isPublic: true,
     },
-    { 
+    {
         src: "https://randomwordgenerator.com/img/picture-generator/57e6d3444d56ac14f1dc8460962e33791c3ad6e04e507440742a7ed19549cc_640.jpg",
         alt: "Purim in SUB #100",
         caption: "What a purim to remember",
@@ -30,7 +30,7 @@ const list = [
         user_handle: "@JewPaltz",
         isPublic: true,
     },
-    { 
+    {
         src: "https://randomwordgenerator.com/img/picture-generator/52e0d1474355ae14f1dc8460962e33791c3ad6e04e50744074267bd6904ac5_640.jpg",
         alt: "Mug with slogan",
         caption: "Never be afraid to try something new. The ark was built by amateurs and the Titanic by professionals",
@@ -38,7 +38,7 @@ const list = [
         user_handle: "@JewPaltz",
         isPublic: true,
     },
-    { 
+    {
         src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
         alt: "The family",
         caption: "The whole family. All the kids hiking together. Sukkot Vacation.",
@@ -49,20 +49,22 @@ const list = [
 ];
 
 const addOwnerPipeline = [
-    {"$lookup" : {
-        from: "users",
-        localField: 'user_handle',
-        foreignField: 'handle',
-        as: 'user',
-    }},
-    {$unwind: "$user"},
-    { $project: { "owner.password": 0}}
+    {
+        "$lookup": {
+            from: "users",
+            localField: 'user_handle',
+            foreignField: 'handle',
+            as: 'user',
+        }
+    },
+    { $unwind: "$user" },
+    { $project: { "owner.password": 0 } }
 ];
 
-const listWithOwner = ()=> list.map(x => ({ 
-    ...x, 
-    user: GetByHandle(x.user_handle) 
-}) );
+const listWithOwner = () => list.map(x => ({
+    ...x,
+    user: GetByHandle(x.user_handle)
+}));
 
 module.exports.GetAll = function GetAll() {
     return collection.aggregate(addOwnerPipeline).toArray();
@@ -75,25 +77,25 @@ module.exports.GetWall = function GetWall(handle) {
 module.exports.GetFeed = async function (handle) {
     const user = await Users.collection.findOne({ handle });
     if (!user) { throw { code: 404, msg: "User not found" } }
-    const targets = user.following.filter(x=> x.isApproved).map(x=> x.handle).concat(handle)
+    const targets = user.following.filter(x => x.isApproved).map(x => x.handle).concat(handle)
     const query = collection.aggregate([
-        {$match: { user_handle: {$in: targets} } },
-     ].concat(addOwnerPipeline));
+        { $match: { user_handle: { $in: targets } } },
+    ].concat(addOwnerPipeline));
     return query.toArray();
 }
 
-module.exports.Get = function Get(post_id) { 
-    return collection.findOne({_id: new ObjectId(post_id) }); 
+module.exports.Get = function Get(post_id) {
+    return collection.findOne({ _id: new ObjectId(post_id) });
 }
 
 module.exports.Add = async function Add(post) {
-    if(!post.user_handle){
-        throw {code: 422, msg: "Post must have an Owner"}
+    if (!post.user_handle) {
+        throw { code: 422, msg: "Post must have an Owner" }
     }
     post.time = Date();
-    
+
     const response = await collection.insertOne(post);
-    
+
     post.id = response.insertedId;
 
     return { ...post };
@@ -101,23 +103,23 @@ module.exports.Add = async function Add(post) {
 
 module.exports.Update = async function Update(post_id, post) {
     const results = await collection.findOneAndUpdate(
-        {_id: new ObjectId(post_id) }, 
+        { _id: new ObjectId(post_id) },
         { $set: post },
-        { returnDocument: 'after'}
+        { returnDocument: 'after' }
     );
 
     return results.value;
 }
 
 module.exports.Delete = async function Delete(post_id) {
-    const results = await collection.findOneAndDelete({_id: new ObjectId(post_id) })
+    const results = await collection.findOneAndDelete({ _id: new ObjectId(post_id) })
 
     return results.value;
-} 
+}
 
-module.exports.Search = q => collection.find({ caption: new RegExp(q,"i") }).toArray();
+module.exports.Search = q => collection.find({ caption: new RegExp(q, "i") }).toArray();
 
-module.exports.Seed = async ()=>{
+module.exports.Seed = async () => {
     collection.deleteMany();
     for (const x of list) {
         await this.Add(x)

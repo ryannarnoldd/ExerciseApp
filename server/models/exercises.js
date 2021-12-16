@@ -1,4 +1,4 @@
-const Users = require( "./users");
+const Users = require("./users");
 const { ObjectId } = require('bson');
 const { client } = require('./mongo');
 
@@ -6,7 +6,7 @@ const collection = client.db(process.env.MONGO_DB).collection('exercises');
 module.exports.collection = collection;
 
 const list = [
-    { 
+    {
         title: "I ran so much today.",
         type: "Running",
         calories: 450,
@@ -15,7 +15,7 @@ const list = [
         user_handle: "@vp",
         isPublic: true,
     },
-    { 
+    {
         title: "My bike went vroom.",
         type: "Cycling",
         calories: 287,
@@ -24,7 +24,7 @@ const list = [
         user_handle: "@JewPaltz",
         isPublic: true,
     },
-    { 
+    {
         title: "My bike broke this morning.",
         type: "Cycling",
         calories: 112,
@@ -33,7 +33,7 @@ const list = [
         user_handle: "@JewPaltz",
         isPublic: true,
     },
-    { 
+    {
         title: "I kicked the ball in the cold weather.",
         type: "Soccer",
         calories: 400,
@@ -42,7 +42,7 @@ const list = [
         user_handle: "@johnsmith",
         isPublic: true,
     },
-    { 
+    {
         title: "Slapped paddles with Chris",
         type: "Table Tennis",
         calories: 798,
@@ -54,20 +54,22 @@ const list = [
 ];
 
 const addOwnerPipeline = [
-    {"$lookup" : {
-        from: "users",
-        localField: 'user_handle',
-        foreignField: 'handle',
-        as: 'user',
-    }},
-    {$unwind: "$user"},
-    { $project: { "owner.password": 0}}
+    {
+        "$lookup": {
+            from: "users",
+            localField: 'user_handle',
+            foreignField: 'handle',
+            as: 'user',
+        }
+    },
+    { $unwind: "$user" },
+    { $project: { "owner.password": 0 } }
 ];
 
-const listWithOwner = ()=> list.map(x => ({ 
-    ...x, 
-    user: GetByHandle(x.user_handle) 
-}) );
+const listWithOwner = () => list.map(x => ({
+    ...x,
+    user: GetByHandle(x.user_handle)
+}));
 
 module.exports.GetAll = function GetAll() {
     return collection.aggregate(addOwnerPipeline).toArray();
@@ -80,25 +82,25 @@ module.exports.GetLog = function GetWall(handle) {
 module.exports.GetAllLog = async function (handle) {
     const user = await Users.collection.findOne({ handle });
     if (!user) { throw { code: 404, msg: "User not found" } }
-    const targets = user.following.filter(x=> x.isApproved).map(x=> x.handle).concat(handle)
+    const targets = user.following.filter(x => x.isApproved).map(x => x.handle).concat(handle)
     const query = collection.aggregate([
-        {$match: { user_handle: {$in: targets} } },
-     ].concat(addOwnerPipeline));
+        { $match: { user_handle: { $in: targets } } },
+    ].concat(addOwnerPipeline));
     return query.toArray();
 }
 
-module.exports.Get = function Get(exercise_id) { 
-    return collection.findOne({_id: new ObjectId(exercise_id) }); 
+module.exports.Get = function Get(exercise_id) {
+    return collection.findOne({ _id: new ObjectId(exercise_id) });
 }
 
 module.exports.Log = async function Log(exercise) {
-    if(!exercise.user_handle){
-        throw {code: 422, msg: "Exercise must have an Owner"}
+    if (!exercise.user_handle) {
+        throw { code: 422, msg: "Exercise must have an Owner" }
     }
     exercise.time = Date();
-    
+
     const response = await collection.insertOne(exercise);
-    
+
     exercise.id = response.insertedId;
 
     return { ...exercise };
@@ -106,23 +108,23 @@ module.exports.Log = async function Log(exercise) {
 
 module.exports.Update = async function Update(exercise_id, exercise) {
     const results = await collection.findOneAndUpdate(
-        {_id: new ObjectId(exercise_id) }, 
+        { _id: new ObjectId(exercise_id) },
         { $set: exercise },
-        { returnDocument: 'after'}
+        { returnDocument: 'after' }
     );
 
     return results.value;
 }
 
 module.exports.Unlog = async function Unlog(exercise_id) {
-    const results = await collection.findOneAndDelete({_id: new ObjectId(exercise_id) })
+    const results = await collection.findOneAndDelete({ _id: new ObjectId(exercise_id) })
 
     return results.value;
-} 
+}
 
-module.exports.Search = q => collection.find({ description: new RegExp(q,"i") }).toArray();
+module.exports.Search = q => collection.find({ description: new RegExp(q, "i") }).toArray();
 
-module.exports.Seed = async ()=>{
+module.exports.Seed = async () => {
     collection.deleteMany();
     for (const x of list) {
         await this.Log(x)

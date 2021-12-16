@@ -1,86 +1,100 @@
 <template>
-    <div class="container is-max-desktop">
-        <h2 class="title is-2 has-text-centered is-capitalized">Frequently Asked Questions</h2>
-        <h6 class="subtitle has-text-centered">
-            Find frequently asked questions amongst many other users and more.
-        </h6>
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered is-capitalized">
+      Frequently Asked Questions
+    </h2>
+    <h6 class="subtitle has-text-centered">
+      Find frequently asked questions amongst many other users and more.
+    </h6>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>I am new to your website. Do I need a certain level of knowledge or experience to continue?</p>
-            </div>
-            <div class="message-body">
-                Hello, and Welcome! <em>Fitizen</em> is a perfect tool for all ages and experiences no matter who you are!
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>
+          I am new to your website. Do I need a certain level of knowledge or
+          experience to continue?
+        </p>
+      </div>
+      <div class="message-body">
+        Hello, and Welcome! <em>Fitizen</em> is a perfect tool for all ages and
+        experiences no matter who you are!
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>What is the minimum age to create an account?</p>
-            </div>
-            <div class="message-body">
-                You need to be at least 18 years old to create an account on <em>Fitizen</em>>, or 13 years of age or older with the help of a guardian.
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>What is the minimum age to create an account?</p>
+      </div>
+      <div class="message-body">
+        You need to be at least 18 years old to create an account on
+        <em>Fitizen</em>>, or 13 years of age or older with the help of a
+        guardian.
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>How much does it cost?</p>
-            </div>
-            <div class="message-body">
-                Fortunately, since this is for a school project and I have no way of making money off of this, this is completely free!
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>How much does it cost?</p>
+      </div>
+      <div class="message-body">
+        Fortunately, since this is for a school project and I have no way of
+        making money off of this, this is completely free!
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>Is there any other way I can support the team?</p>
-            </div>
-            <div class="message-body">
-                We [I] work hard here at Fitizen trying to make it the best experience for all of our users. So, if you would like to buy me a coffee, you know what to do...
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>Is there any other way I can support the team?</p>
+      </div>
+      <div class="message-body">
+        We [I] work hard here at Fitizen trying to make it the best experience
+        for all of our users. So, if you would like to buy me a coffee, you know
+        what to do...
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>How long in development has this been in?</p>
-            </div>
-            <div class="message-body">
-                Looking at the day you asked this, this project has had about one to two months of development placed into it and it will continue strong until the day it end.
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>How long in development has this been in?</p>
+      </div>
+      <div class="message-body">
+        Looking at the day you asked this, this project has had about one to two
+        months of development placed into it and it will continue strong until
+        the day it end.
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>What languages were used to create the website for Fitizen?</p>
-            </div>
-            <div class="message-body">
-                That is a great question! Currently that answer is always changing but as of now, this mainly uses HTML, CSS, Bulma, and many others.
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>What languages were used to create the website for Fitizen?</p>
+      </div>
+      <div class="message-body">
+        That is a great question! Currently that answer is always changing but
+        as of now, this mainly uses HTML, CSS, Bulma, and many others.
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>Where can I share my suggestions?</p>
-            </div>
-            <div class="message-body">
-                Head on over to the Contact Us tab and please share your thoughts! We are continously developing <em>Fitizen</em> for all of our users and take every suggestion and idea very seriously.
-            </div>
-        </article>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>Where can I share my suggestions?</p>
+      </div>
+      <div class="message-body">
+        Head on over to the Contact Us tab and please share your thoughts! We
+        are continously developing <em>Fitizen</em> for all of our users and
+        take every suggestion and idea very seriously.
+      </div>
+    </article>
 
-        <article class="message is-dark">
-            <div class="message-header">
-                <p>Is this the last question in the FAQ?</p>
-            </div>
-            <div class="message-body">
-                Yes, yes this is the last question in the FAQ.
-            </div>
-        </article>
-    </div>
+    <article class="message is-dark">
+      <div class="message-header">
+        <p>Is this the last question in the FAQ?</p>
+      </div>
+      <div class="message-body">
+        Yes, yes this is the last question in the FAQ.
+      </div>
+    </article>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>

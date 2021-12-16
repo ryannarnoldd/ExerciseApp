@@ -20,7 +20,9 @@
         </div>
         <div class="media-content">
           <p class="subtitle is-6 has-text-left">
-            <b v-if="post.user.handle !== Session.user.handle">{{ post.user.firstName }} {{ post.user.lastName }}</b>
+            <b v-if="post.user.handle !== Session.user.handle"
+              >{{ post.user.firstName }} {{ post.user.lastName }}</b
+            >
             <b v-else>Me</b>
             <br />
             {{ post.user.handle }}

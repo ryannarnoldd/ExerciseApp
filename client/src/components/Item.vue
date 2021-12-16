@@ -8,8 +8,10 @@
           <b class="">{{ item.title }}</b>
         </h1>
 
-        Activity: <b>{{ item.type }}</b>, Calories Burned: <b>{{ item.calories }}</b>, Workout Minutes: <b>{{ item.duration }} minutes.</b>
-        <br>
+        Activity: <b>{{ item.type }}</b
+        >, Calories Burned: <b>{{ item.calories }}</b
+        >, Workout Minutes: <b>{{ item.duration }} minutes.</b>
+        <br />
         Date: <time class="small" :datetime="item.time">{{ prettyDate }}</time>
       </div>
     </div>

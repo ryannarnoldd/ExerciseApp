@@ -12,8 +12,8 @@ export function GetAllLog(handle) {
     return api('exercises/log/' + handle);
 }
 
-export function Get(exercise_id) { 
-    return api('exercises/' + exercise_id); 
+export function Get(exercise_id) {
+    return api('exercises/' + exercise_id);
 }
 
 export function Log(exercise) {

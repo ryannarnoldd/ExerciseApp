@@ -46,7 +46,7 @@ import Friend from "../components/Friend.vue";
 
 export default {
   components: {
-      Friend
+    Friend,
   },
   data: () => ({
     friends: [],

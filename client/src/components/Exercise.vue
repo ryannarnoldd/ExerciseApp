@@ -9,7 +9,7 @@
         ></button>
 
         <h1>
-          <b class="">{{ exercise.title }}<br /></b>
+          <b class="title">{{ exercise.title }}<br /></b>
         </h1>
         <hr />
         Activity: <b>{{ exercise.type }}</b

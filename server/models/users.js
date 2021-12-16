@@ -24,7 +24,7 @@ const list = [
         password: 'Her',
         isAdmin: true,
         email: "vp@wh.com",
-        following: [{ handle: '@johnsmith', isApproved: true },{ handle: '@JewPaltz', isApproved: true }]
+        following: [{ handle: '@johnsmith', isApproved: true }, { handle: '@JewPaltz', isApproved: true }]
     },
     {
         firstName: 'John',
@@ -59,7 +59,7 @@ module.exports.Register = async function Register(user) {
     const user2 = await collection.insertOne(user);
     user._id = user2.insertedId;
 
-    const data =  { ...user, password: undefined };
+    const data = { ...user, password: undefined };
 
     return { user: data };
 }

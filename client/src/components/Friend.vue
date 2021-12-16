@@ -3,10 +3,12 @@
     <div class="card-content">
       <div class="content">
         <button class="delete" @click="$emit('remove')"></button>
-        Friend:  <b>{{ friend.firstName }} {{ friend.lastName }}</b><br> 
-        Handle:  <b>{{ friend.handle }}</b><br>
-        Following Amount:  <b>{{ friend.following.length }}</b>
-        <br>
+        Friend: <b>{{ friend.firstName }} {{ friend.lastName }}</b
+        ><br />
+        Handle: <b>{{ friend.handle }}</b
+        ><br />
+        Following Amount: <b>{{ friend.following.length }}</b>
+        <br />
       </div>
     </div>
   </div>
@@ -21,7 +23,7 @@ export default {
   }),
   props: {
     friend: Object,
-  }
+  },
 };
 </script>
 

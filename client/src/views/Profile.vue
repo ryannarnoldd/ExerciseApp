@@ -5,7 +5,7 @@
     </h2>
     <h6 class="subtitle has-text-centered">
       See any information you have about yourself that you want changed?
-      <br>
+      <br />
       This is the place!!
     </h6>
     <form @submit.prevent="$emit('updatedChanges')">
@@ -133,53 +133,48 @@
 </template>
 
 <script>
- import session from "../services/session";
+import session from "../services/session";
 // import { Unlog, GetAllLog, GetLog } from "../services/exercises";
 // import { Delete, GetFeed, GetWall } from "../services/posts";
 // import { Update } from "../services/users";
 
 export default {
-    components: {
-    },
-    data() {
-        return {
-            handle: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            pic: '',
-        };
-    },
-    props : {
-        user: Object
-    },
-    async mounted() {
-        this.handle = session.user.handle;
-        this.firstName = session.user.firstName
-        this.lastName = session.user.lastName
-        this.email = session.user.email
-        this.password = session.user.password
-        this.pic = session.user.pic
+  components: {},
+  data() {
+    return {
+      handle: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      pic: "",
+    };
+  },
+  props: {
+    user: Object,
+  },
+  async mounted() {
+    this.handle = session.user.handle;
+    this.firstName = session.user.firstName;
+    this.lastName = session.user.lastName;
+    this.email = session.user.email;
+    this.password = session.user.password;
+    this.pic = session.user.pic;
+  },
+  methods: {
+    saveChanges() {
+      // session.user.handle = this.handle;
+      // session.user.firstName = this.firstName
+      // session.user.lastName = this.lastName
+      // session.user.email = this.email
+      // session.user.password = this.password
+      // session.user.pic = this.pic
 
+      // Update(session.user.user_id, session.user)
+
+      this.$router.push("/profile");
     },
-    methods: {
-        saveChanges () {
-            // session.user.handle = this.handle;
-            // session.user.firstName = this.firstName
-            // session.user.lastName = this.lastName
-            // session.user.email = this.email
-            // session.user.password = this.password
-            // session.user.pic = this.pic
-
-            // Update(session.user.user_id, session.user)
-            
-            this.$router.push('/profile')
-
-
-            
-        }
-    }
+  },
 };
 </script>
 
