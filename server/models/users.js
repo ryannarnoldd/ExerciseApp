@@ -36,6 +36,66 @@ const list = [
         email: "john@smith.com",
         following: [{ handle: '@vp', isApproved: true },],
     },
+    {
+        firstName: 'Moshe',
+        lastName: 'Plotkin',
+        handle: '@JewPaltz',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'me',
+        isAdmin: true,
+        email: "plotkinm@newpaltz.edu",
+        following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true }]
+    },
+    {
+        firstName: 'Kamala',
+        lastName: 'Harris',
+        handle: '@vp',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'Her',
+        isAdmin: true,
+        email: "vp@wh.com",
+        following: [{ handle: '@johnsmith', isApproved: true }, { handle: '@JewPaltz', isApproved: true }]
+    },
+    {
+        firstName: 'Jamie',
+        lastName: 'Dad',
+        handle: '@xavier',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'iluh',
+        isAdmin: true,
+        email: "john@smith.com",
+        following: [{ handle: '@vp', isApproved: true },],
+    },
+    {
+        firstName: 'This',
+        lastName: 'Guy',
+        handle: '@MOOOOOOOOOOOOOOO',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'mluhe',
+        isAdmin: true,
+        email: "plotkinm@newpaltz.edu",
+        following: [{ handle: '@vp', isApproved: true }, { handle: '@johnsmith', isApproved: true }]
+    },
+    {
+        firstName: 'Hater',
+        lastName: 'Me',
+        handle: '@reallybadguy',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'huihiu',
+        isAdmin: true,
+        email: "vp@wh.com",
+        following: [{ handle: '@johnsmith', isApproved: true }, { handle: '@JewPaltz', isApproved: true }]
+    },
+    {
+        firstName: 'Ryan',
+        lastName: 'Norld',
+        handle: '@RyanNorld',
+        pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
+        password: 'uhui',
+        isAdmin: true,
+        email: "john@smith.com",
+        following: [{ handle: '@vp', isApproved: true },],
+    },
 
 ];
 
