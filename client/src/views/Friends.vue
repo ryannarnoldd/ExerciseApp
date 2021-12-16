@@ -437,20 +437,14 @@ export default {
 
   computed: {
     searchFriends() {
-      console.log(this.handle)
-      if (this.handle.length > 0) { 
       return this.searchedUsers.filter((option) => {
         return (
-          option.user.handle
+          option
             .toString()
             .toLowerCase()
-            .indexOf(this.handle.toLowerCase()) >= 0
+            // .indexOf(this.handle.toLowerCase()) >= 0
         );
       });
-      }
-      else {
-        return "";
-      }
     },
   },
   methods: {
