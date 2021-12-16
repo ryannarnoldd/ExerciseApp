@@ -36,7 +36,7 @@
                 :open-on-focus="openOnFocus"
                 :data="searchFriends"
                 @typing="onSearch"
-                field="user.handle"
+                field="handle"
                 @select="(option) => (selected = option)"
               >
               </o-autocomplete>
@@ -61,7 +61,6 @@ export default {
     // AutoComplete,
   },
   data: () => ({
-    data,
     friends: [],
     searchedUsers: [],
     keepFirst: false,
@@ -77,7 +76,7 @@ export default {
   computed: {
     searchFriends() {
       return this.searchedUsers.filter((option) => {
-        console.log(option);
+        console.log("here");
         return (
           option
             .toString()
