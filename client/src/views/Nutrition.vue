@@ -1,8 +1,10 @@
 <template>
     <div class="container is-max-desktop">
         <h1 class="title has-text-centered">Track Your Nutrition</h1>
-        <h6 class="subtitle">Nutrition is an important part of keeping your physical health, that's why you can track every meal and recipe here.</h6>
-        <form action="" method="post">
+        <h6 class="subtitle has-text-centered">Nutrition is an important part of keeping your physical health, that's why you can track every meal here.
+            <br>
+            This is not yet implemented, but will soon be added. It is still important to watch what you eat!
+        </h6>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Breakfast</label>
@@ -118,7 +120,6 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </template>
 

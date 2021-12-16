@@ -1,8 +1,10 @@
 <template>
     <div class="container is-max-desktop">
-        <form action="" method="post">
             <h2 class="title is-2 has-text-centered is-capitalized">Apply to be a Trainer!</h2>
-            <h6 class="subtitle has-text-centered">There are no current trainers so apply to be one to help others.</h6>
+            <h6 class="subtitle has-text-centered">There are no current trainers so apply to be one to help others.
+                <br>
+                This is an upcoming feature to make sure you are kept accountable and on track.
+            </h6>
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -46,7 +48,7 @@
                         </p>
                     </div>
                     <div class="field">
-                        <span class="control is-expanded"> -->
+                        <span class="control is-expanded">
                             <div class="control">
                                 <div class="select is-fullwidth" type="topic">
                                     <select>
@@ -73,7 +75,6 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </template>
 

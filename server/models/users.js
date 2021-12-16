@@ -23,7 +23,7 @@ const list = [
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         password: 'Her',
         isAdmin: true,
-        emails: "vp@wh.com",
+        email: "vp@wh.com",
         following: [{ handle: '@johnsmith', isApproved: true },{ handle: '@JewPaltz', isApproved: true }]
     },
     {
@@ -33,7 +33,7 @@ const list = [
         pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo3I5GL9_Zd_LULXRIXTzRLlVESBnoGp8sw&usqp=CAU',
         password: 'BeepBop',
         isAdmin: true,
-        emails: "john@smith.com",
+        email: "john@smith.com",
         following: [{ handle: '@vp', isApproved: true },],
     },
 

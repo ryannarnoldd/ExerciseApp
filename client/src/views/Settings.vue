@@ -1,7 +1,10 @@
 <template>
     <div class="container is-max-desktop">
         <h1 class="title has-text-centered">Settings</h1>
-        <h6 class="subtitle">This is where you can manage many settings to make your <em>Fitizen</em> experience better and more comfortable.</h6>
+        <h6 class="subtitle has-text-centered">This is where you can manage many settings to make your <em>Fitizen</em> experience better and more comfortable.
+        <br>
+        This is not currently in use, but will soon be added.
+        </h6>
         
         <form action="" method="post">
             <div class="field is-horizontal">

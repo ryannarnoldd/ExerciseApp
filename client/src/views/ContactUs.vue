@@ -3,7 +3,7 @@
         <h2 class="title is-2 has-text-centered is-capitalized">Contact Us</h2>
         <h6 class="subtitle has-text-centered">Email us with any questions or inquiries, or call us at (845) 123-4567.</h6>
         
-        <form action="" method="post">
+        <form action="mailto:help@fitizen.com" method="GET">
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">From</label>
@@ -86,7 +86,7 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-dark">Send</button>
+                            <button onclick="location.href='mailto:help@fitizen.com';" class="button is-dark">Send</button>
                         </div>
                     </div>
                 </div>

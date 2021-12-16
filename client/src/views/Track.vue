@@ -1,10 +1,12 @@
 <template>
     <div class="container is-max-desktop">
         <h1 class="title has-text-centered">Track Your Fitness</h1>
-        <h6 class="subtitle">This is where you will be able to track your exercise and progress, either entering times manually or trying out built-in exercise stopwatch.</h6>
+        <h6 class="subtitle has-text-centered">The built-in stopwatch is a great way to keep track of your exercises!
+            <br>
+            Just click the button below to start the timer and see the time you have spent on each exercise.
+        </h6>
 
         <div class="field is-horizontal">
-            <form action="" method="post">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Exercise</label>
@@ -43,21 +45,43 @@
                 <div class="field is-horizontal">
                     <div class="field-label"></div>
                     <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <button class="button is-dark is-centered">Start</button>
-                                <button class="button is-dark is-centered">Stop</button>
-                            </div>
-                        </div>
+                                <button class="button is-dark" type="submit" @click="start" >Start</button>
+                                <button class="button is-light" type="submit" @click="stop">Stop</button>
+                                <button class="button is-red" type="submit" @click="reset">Reset</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    // Create a working counter by seconds.
+    data() {
+        return {
+            counter: 0
+        }
+    },
+    mounted() {
+        // Start the counter.
+        this.start();
+    },
+    methods: {
+        // Start the counter.
+        start() {
+            this.interval = setInterval(() => {
+                this.counter++;
+            }, 1000);
+        },
+        // Stop the counter.
+        stop() {
+            clearInterval(this.interval);
+        },
+        // Reset the counter.
+        reset() {
+            this.counter = 0;
+        }
+    }
 
 }
 </script>
