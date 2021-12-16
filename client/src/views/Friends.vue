@@ -21,39 +21,39 @@
     </div>
 
     <h6 class="subtitle has-text-centered">
-      Search for all users, including yourself, to see who else is a <em>Fitizen</em>
+      Search for all users, including yourself, to see who else is a
+      <em>Fitizen</em>
     </h6>
 
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Search Users</label>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Search Users</label>
+      </div>
+      <!-- slot:empty -->
+      <div class="field-body is-horizontal">
+        <div class="field">
+          <p class="control">
+            <o-autocomplete
+              v-model="handle"
+              placeholder="Search for any user! (e.g. @friend)"
+              :keep-first="keepFirst"
+              :open-on-focus="openOnFocus"
+              :data="searchFriends"
+              @typing="onSearch"
+              field="handle"
+              @select="(option) => (selected = option)"
+            >
+            </o-autocomplete>
+          </p>
+          <br />
         </div>
-        <!-- slot:empty -->
-        <div class="field-body is-horizontal">
-          <div class="field">
-            <p class="control">
-              <o-autocomplete
-                v-model="handle"
-                placeholder="Search for any user! (e.g. @friend)"
-                :keep-first="keepFirst"
-                :open-on-focus="openOnFocus"
-                :data="searchFriends"
-                @typing="onSearch"
-                field="handle"
-                @select="(option) => (selected = option)">
-              </o-autocomplete>
-            </p>
-            <br>
-          </div>
-          <div class="field">
-            <p class="control">
-              <button class="button is-dark">
-                Add Friend
-              </button>
-            </p>
-          </div>
+        <div class="field">
+          <p class="control">
+            <button class="button is-dark">Add Friend</button>
+          </p>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
@@ -85,13 +85,9 @@ export default {
   computed: {
     searchFriends() {
       return this.searchedUsers.filter((option) => {
-        return (
-          option
-            .toString()
-            .toLowerCase()
-            // Not the currnet user's handle...
-            // .indexOf(session.user.handle.toLowerCase()) === -1
-        );
+        return option.toString().toLowerCase();
+        // Not the currnet user's handle...
+        // .indexOf(session.user.handle.toLowerCase()) === -1
       });
     },
   },
@@ -118,8 +114,7 @@ export default {
     async onSearch(search) {
       if (search.length > 0) {
         this.searchedUsers = await GetBySearch(search);
-      }
-      else {
+      } else {
         this.searchedUsers = [];
       }
     },
