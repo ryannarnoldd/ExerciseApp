@@ -30,12 +30,12 @@
           <div class="field">
             <p class="control">
               <o-autocomplete
-                v-model="handle"
+                v-model="friend"
                 placeholder="Search for any users! (e.g. @friend)"
                 :keep-first="keepFirst"
                 :open-on-focus="openOnFocus"
                 :data="searchFriends"
-                @typing="onNewText"
+                @typing="onSearch"
                 field="user.handle"
                 @select="(option) => (selected = option)"
               >
@@ -437,13 +437,13 @@ export default {
 
   computed: {
     searchFriends() {
-      if (this.handle.length > 0) { 
+      if (this.search.length > 0) { 
       return this.searchedUsers.filter((option) => {
         return (
           option.user.handle
             .toString()
             .toLowerCase()
-            .indexOf(this.handle.toLowerCase()) >= 0
+            .indexOf(this.search.toLowerCase()) >= 0
         );
       });
       }
@@ -472,8 +472,8 @@ export default {
       // update the user through the database now with the new changes.
       await session.user.Update(session.user.id, session.user);
     },
-    async onNewText(newText) {
-      this.searchedUsers = await GetBySearch(newText);
+    async onSearch(search) {
+      this.searchedUsers = await GetBySearch(search);
     },
   },
 };
