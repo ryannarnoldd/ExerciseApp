@@ -105,7 +105,7 @@ export default {
         password: null,
         isAdmin: false,
         email: null,
-        following: [{ handle: '@vp', isApproved: true },{ handle: '@JewPaltz', isApproved: true } ],
+        following: [{ handle: '@vp', isApproved: true },{ handle: '@JewPaltz', isApproved: true },{ handle: '@johnsmith', isApproved: true } ],
         Session 
     }),
     methods: {

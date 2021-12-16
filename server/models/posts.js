@@ -7,7 +7,7 @@ module.exports.collection = collection;
 
 const list = [
     { 
-        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
+        src: "https://randomwordgenerator.com/img/picture-generator/gae70ff0c9be5b5f10c08736584b1dcd6308500f6dab9e94e500464a9774c8bbd0a0d6c620b806ad6f7ce814363416e3d_640.jpg",
         alt: "Placeholder image",
         caption: "Lorem Ipsom",
         time: Date(),
@@ -15,7 +15,7 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
+        src: "https://randomwordgenerator.com/img/picture-generator/52e5d64a4c52a514f1dc8460962e33791c3ad6e04e507440772872dc914ec7_640.jpg",
         alt: "Placeholder image",
         caption: "We want Moshiach NOW PLEASE!",
         time: Date(),
@@ -23,7 +23,7 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
+        src: "https://randomwordgenerator.com/img/picture-generator/57e6d3444d56ac14f1dc8460962e33791c3ad6e04e507440742a7ed19549cc_640.jpg",
         alt: "Purim in SUB #100",
         caption: "What a purim to remember",
         time: Date(),
@@ -31,7 +31,7 @@ const list = [
         isPublic: true,
     },
     { 
-        src: "https://www.chicagotribune.com/resizer/nnQ3bY7X6794G-zAJXp13d4r4nI=/1200x0/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/7UZXJVP42VG5VISQNDAUKHJDJQ.jpg",
+        src: "https://randomwordgenerator.com/img/picture-generator/52e0d1474355ae14f1dc8460962e33791c3ad6e04e50744074267bd6904ac5_640.jpg",
         alt: "Mug with slogan",
         caption: "Never be afraid to try something new. The ark was built by amateurs and the Titanic by professionals",
         time: Date(),
