@@ -437,6 +437,7 @@ export default {
 
   computed: {
     searchFriends() {
+      if (this.handle.length > 0) { 
       return this.searchedUsers.filter((option) => {
         return (
           option.user.handle
@@ -445,6 +446,10 @@ export default {
             .indexOf(this.handle.toLowerCase()) >= 0
         );
       });
+      }
+      else {
+        return [];
+      }
     },
   },
   methods: {
